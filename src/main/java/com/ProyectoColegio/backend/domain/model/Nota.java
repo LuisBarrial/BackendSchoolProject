@@ -8,17 +8,12 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@Entity(name = "salon")
-@Table(name = "salon")
-public class Salon {
-
+@Entity(name = "nota")
+@Table(name = "nota")
+public class Nota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre;
-
-    private byte numSillas;
-
-
+    private  String nombre;
 }

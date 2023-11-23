@@ -12,9 +12,11 @@ import lombok.*;
 @Entity(name = "estudiante")
 @Table(name = "estudiante")
 public class Estudiante {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_usuario")
+    private Usuario id;
 
     @Size(min = 8, max = 8,message = "El DNI debe tener 8 digitos")
     private String dni;

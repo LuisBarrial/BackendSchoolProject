@@ -18,7 +18,7 @@ public class Consulta {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario")
-    private Long idUsuario;
+    private Usuario idUsuario;
 
 
     private String estado;
