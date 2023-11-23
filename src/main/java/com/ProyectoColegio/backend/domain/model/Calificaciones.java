@@ -7,7 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity(name = "calificaciones")
 @Table(name = "calificacion")
 public class Calificaciones {
