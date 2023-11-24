@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.io.Serializable;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -12,12 +14,16 @@ import lombok.*;
 @ToString
 @Entity(name = "profesor")
 @Table(name = "profesor")
-public class Profesor {
+@EqualsAndHashCode(of = "id")
+public class Profesor implements Serializable {
 
     @Id
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_usuario")
-    private Usuario id;
+    @Column(name = "id_usuario") // Nombre de la columna que representa la clave primaria de Usuario
+    private Long id; // Campo que representa la clave primaria de Usuario
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn // Utiliza la misma clave primaria que la entidad Usuario
+    private Usuario usuario;
 
     private String nombre;
 

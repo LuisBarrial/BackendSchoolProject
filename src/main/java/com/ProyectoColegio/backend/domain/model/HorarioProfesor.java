@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Getter
 @Setter
 @ToString
@@ -15,16 +18,16 @@ public class HorarioProfesor {
 
     @Id
     @OneToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "DNI_profesor", referencedColumnName = "dni")
+    @JoinColumn(name = "id_profesor")
     private Profesor profesor;
 
     private String nombreProfesor;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToOne
     private Curso curso;
 
     @ManyToOne
-    @JoinColumn(name = "salon_id")
+    @JoinColumn(name= "id_salon",foreignKey = @ForeignKey(name = "fk_salon_horarioP"))
     private Salon salon;
 
     @Pattern(regexp = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$", message = "El formato debe ser hh:mm")

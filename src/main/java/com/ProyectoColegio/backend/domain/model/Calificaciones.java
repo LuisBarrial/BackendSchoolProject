@@ -2,12 +2,16 @@ package com.ProyectoColegio.backend.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.aspectj.weaver.ast.Not;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity(name = "calificaciones")
+@EqualsAndHashCode
 @Table(name = "calificacion")
 public class Calificaciones {
 
@@ -16,23 +20,21 @@ public class Calificaciones {
     private String nombreCurso;
 
     @Id
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "DNI_profesor", insertable = false, updatable = false)
     private Profesor profesor;
 
     @Id
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "DNI_estudiante", insertable = false, updatable = false)
     private Estudiante estudiante;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "COD_curso", insertable = false, updatable = false)
     private Curso curso;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "COD_nota", insertable = false, updatable = false)
     private Nota nota;
 
     private int valor;

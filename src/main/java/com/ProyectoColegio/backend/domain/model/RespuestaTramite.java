@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 @Table(name = "respuesta_tramite")
 @Entity
 public class RespuestaTramite {
