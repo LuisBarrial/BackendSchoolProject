@@ -1,5 +1,7 @@
 package com.ProyectoColegio.backend.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
@@ -24,8 +26,8 @@ public class Estudiante implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, optional = false,fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id")
     @MapsId
+    @JsonIgnore
     private Usuario usuario;
-
     @Size(min = 8, max = 8,message = "El DNI debe tener 8 digitos")
     private String dni;
 
