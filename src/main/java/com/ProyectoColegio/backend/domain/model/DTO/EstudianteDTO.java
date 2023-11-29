@@ -1,8 +1,8 @@
-package com.ProyectoColegio.backend.domain.model.DAO;
+package com.ProyectoColegio.backend.domain.model.DTO;
 
 import jakarta.validation.constraints.NotNull;
 
-public record EstudianteDAO (
+public record EstudianteDTO (
         @NotNull
         Long id,
         String nombre,

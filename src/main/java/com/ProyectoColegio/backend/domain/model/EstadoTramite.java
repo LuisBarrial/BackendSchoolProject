@@ -4,3 +4,4 @@ public enum EstadoTramite {
     ESPERA,
     FINALIZADO
 }
+

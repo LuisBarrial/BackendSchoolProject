@@ -16,7 +16,7 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario")
     private Usuario idUsuario;
 
@@ -28,8 +28,6 @@ public class Consulta {
 
 
     private  String respuesta;
-
-
 
 
 

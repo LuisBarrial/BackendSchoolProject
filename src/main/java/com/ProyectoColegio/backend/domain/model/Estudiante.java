@@ -19,6 +19,7 @@ import java.util.Arrays;
 @EqualsAndHashCode
 public class Estudiante implements Serializable {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +29,14 @@ public class Estudiante implements Serializable {
     @MapsId
     @JsonIgnore
     private Usuario usuario;
+
+    /*
+    @Id
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario; */
+
+
     @Size(min = 8, max = 8,message = "El DNI debe tener 8 digitos")
     private String dni;
 

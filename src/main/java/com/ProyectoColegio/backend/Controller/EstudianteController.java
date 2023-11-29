@@ -1,8 +1,7 @@
 package com.ProyectoColegio.backend.Controller;
 
-import com.ProyectoColegio.backend.domain.model.DAO.EstudianteDAO;
+import com.ProyectoColegio.backend.domain.model.DTO.EstudianteDTO;
 import com.ProyectoColegio.backend.domain.model.Estudiante;
-import com.ProyectoColegio.backend.domain.model.Rol;
 import com.ProyectoColegio.backend.domain.model.Usuario;
 import com.ProyectoColegio.backend.domain.service.IEstudianteService;
 import com.ProyectoColegio.backend.domain.service.IRolService;
@@ -51,7 +50,7 @@ public class EstudianteController {
     }
 
     @PutMapping
-    public ResponseEntity<String> ModificarEstudiante(@RequestBody @Valid EstudianteDAO estudiante){
+    public ResponseEntity<String> ModificarEstudiante(@RequestBody @Valid EstudianteDTO estudiante){
 
         Estudiante estudiante1 = iEstudianteService.findById(estudiante.id());
 
