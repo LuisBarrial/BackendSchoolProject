@@ -53,4 +53,16 @@ public class Profesor implements Serializable {
     private String correo;
 
     private String area;
+
+    @PrePersist
+    public void prePersist() {
+        if(!usuario.getListaRol().isEmpty()) {
+            this.usuario.setDni(dni);
+            this.usuario.setCorreo(correo);
+            this.usuario.setNombre(nombre);
+            this.usuario.setClave(dni); // Asignar la clave aquí
+        }
+
+    }
+
 }

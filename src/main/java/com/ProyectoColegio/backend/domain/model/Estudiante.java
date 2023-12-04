@@ -24,7 +24,7 @@ public class Estudiante implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false,fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, optional = false,fetch = FetchType.LAZY,orphanRemoval = true)
     @JoinColumn(name = "usuario_id")
     @MapsId
     @JsonIgnore

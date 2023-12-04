@@ -34,7 +34,7 @@ public class Usuario implements Serializable {
 
     private String clave;
 
-    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id"))
     private List<Rol> listaRol;

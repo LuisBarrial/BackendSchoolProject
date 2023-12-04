@@ -43,6 +43,13 @@ public class EstudianteController {
          return ResponseEntity.ok(entity);
     }
 
+    @GetMapping("usuario")
+    public ResponseEntity<List<Estudiante>> getEstudiante2(@RequestParam String grado){
+        List<Estudiante> entity = iEstudianteService.findByGrado(grado);
+        return ResponseEntity.ok(entity);
+    }
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteEstudiante(@PathVariable("id") Long id){
         iEstudianteService.delete(id);

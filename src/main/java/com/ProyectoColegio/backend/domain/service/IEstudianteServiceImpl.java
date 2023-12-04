@@ -22,6 +22,11 @@ public class IEstudianteServiceImpl implements IEstudianteService{
     }
 
     @Override
+    public List<Estudiante> findByGrado(String grado) {
+        return iEstudianteDAO.getListUsers(grado);
+    }
+
+    @Override
     @Transactional
     public Estudiante findById(Long id) {
        return iEstudianteDAO.findById(id).orElse(null);
