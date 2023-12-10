@@ -53,7 +53,6 @@ public class Estudiante implements Serializable {
             this.usuario.setDni(dni);
             this.usuario.setCorreo(correo);
             this.usuario.setNombre(nombre);
-            this.usuario.setClave(dni); // Asignar la clave aquí
         }
 
     }

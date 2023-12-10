@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -27,12 +28,16 @@ public class EstudianteController {
     private IUsuarioService iUsuarioService;
 
     @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
     private IRolService iRolService;
 
     @PostMapping
     public ResponseEntity<Estudiante> saveEstudiante( @RequestBody Estudiante e){
         Usuario usuario = new Usuario();
         usuario.setListaRol(Arrays.asList(iRolService.findById(2L)));
+        usuario.setClave(bCryptPasswordEncoder.encode(e.getDni()));
         e.setUsuario(usuario);
         return ResponseEntity.ok(iEstudianteService.save(e));
     }

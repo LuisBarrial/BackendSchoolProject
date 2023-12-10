@@ -1,4 +1,4 @@
-package com.ProyectoColegio.backend.infra.filters;
+package com.ProyectoColegio.backend.infra;
 
 
 

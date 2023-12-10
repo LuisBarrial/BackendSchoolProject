@@ -1,8 +1,6 @@
 package com.ProyectoColegio.backend.Controller;
 
-import com.ProyectoColegio.backend.domain.model.DTO.EstudianteDTO;
 import com.ProyectoColegio.backend.domain.model.DTO.ProfesorDTO;
-import com.ProyectoColegio.backend.domain.model.Estudiante;
 import com.ProyectoColegio.backend.domain.model.Profesor;
 import com.ProyectoColegio.backend.domain.model.Usuario;
 import com.ProyectoColegio.backend.domain.service.IProfesorService;

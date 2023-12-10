@@ -17,8 +17,10 @@ public class Matricula {
 
     private String fecha;
 
+    private String estado;
+
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "dni_estudiante")
+    @JoinColumn(name = "estudiante")
     private Estudiante estudiante;
 
     private String nombreEstudiante;

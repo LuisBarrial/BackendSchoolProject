@@ -13,6 +13,7 @@ import java.util.List;
 @Entity(name = "calificaciones")
 @EqualsAndHashCode
 @Table(name = "calificacion")
+@IdClass(CalificacionesId.class) // Clase que representa la clave primaria compuesta
 public class Calificaciones {
 
     private String nombreProfesor;
@@ -30,11 +31,7 @@ public class Calificaciones {
     private Estudiante estudiante;
 
     @Id
-    @ManyToOne
-    private Curso curso;
-
-    @Id
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Nota nota;
 
     private int valor;
