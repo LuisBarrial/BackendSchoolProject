@@ -25,6 +25,11 @@ public class IMatriculaServiceImpl implements IMatriculaService {
     }
 
     @Override
+    public Matricula findMatriculaporIdEstudiante(Long id) {
+        return matriculaDAO.findMatriculaByIdEstudiante(id);
+    }
+
+    @Override
     public Matricula findById(Long id) {
         return matriculaDAO.findById(id).orElse(null);
     }

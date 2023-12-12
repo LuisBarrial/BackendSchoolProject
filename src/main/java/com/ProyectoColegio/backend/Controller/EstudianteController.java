@@ -1,9 +1,10 @@
 package com.ProyectoColegio.backend.Controller;
 
+import com.ProyectoColegio.backend.domain.model.*;
 import com.ProyectoColegio.backend.domain.model.DTO.EstudianteDTO;
-import com.ProyectoColegio.backend.domain.model.Estudiante;
-import com.ProyectoColegio.backend.domain.model.Usuario;
+import com.ProyectoColegio.backend.domain.repo.INotasDAO;
 import com.ProyectoColegio.backend.domain.service.IEstudianteService;
+import com.ProyectoColegio.backend.domain.service.IMatriculaService;
 import com.ProyectoColegio.backend.domain.service.IRolService;
 import com.ProyectoColegio.backend.domain.service.IUsuarioService;
 import jakarta.validation.Valid;
@@ -28,6 +29,11 @@ public class EstudianteController {
     private IUsuarioService iUsuarioService;
 
     @Autowired
+    private IMatriculaService iMatriculaService;
+
+    @Autowired
+    private INotasDAO iNotasDAO;
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
@@ -49,7 +55,20 @@ public class EstudianteController {
     }
 
     @GetMapping("usuario")
-    public ResponseEntity<List<Estudiante>> getEstudiante2(@RequestParam String grado){
+    public ResponseEntity<List<Estudiante>> getEstudiantesporId(@RequestParam Long id){
+        String grado = iEstudianteService.findById(id).getGrado();
+        List<Estudiante> entity = iEstudianteService.findByGrado(grado);
+        return ResponseEntity.ok(entity);
+    }
+
+    @GetMapping("find")
+    public ResponseEntity<Estudiante> getEstudianteporId(@RequestParam Long id){
+        Estudiante estudiante = iEstudianteService.findById(id);
+        return ResponseEntity.ok(estudiante);
+    }
+
+    @GetMapping("grado")
+    public ResponseEntity<List<Estudiante>> getEstudiantesporId(@RequestParam String grado){
         List<Estudiante> entity = iEstudianteService.findByGrado(grado);
         return ResponseEntity.ok(entity);
     }
@@ -57,7 +76,12 @@ public class EstudianteController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteEstudiante(@PathVariable("id") Long id){
+        List<Nota> notas = iNotasDAO.getNotasdeEstudiante(id);
+        Matricula m =  iMatriculaService.findMatriculaporIdEstudiante(id);
+        iNotasDAO.deleteAll(notas);
+        iMatriculaService.delete(m.getId());
         iEstudianteService.delete(id);
+        iUsuarioService.delete(id);
         return ResponseEntity.ok("Eliminado");
     }
 
@@ -65,7 +89,6 @@ public class EstudianteController {
     public ResponseEntity<String> ModificarEstudiante(@RequestBody @Valid EstudianteDTO estudiante){
 
         Estudiante estudiante1 = iEstudianteService.findById(estudiante.id());
-
         System.out.println(estudiante1);
         estudiante1.setGrado(estudiante.grado());
         System.out.println(estudiante1.getGrado()+" Grado");

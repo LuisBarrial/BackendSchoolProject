@@ -2,6 +2,7 @@ package com.ProyectoColegio.backend.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
@@ -9,6 +10,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,13 +32,6 @@ public class Estudiante implements Serializable {
     @JsonIgnore
     private Usuario usuario;
 
-    /*
-    @Id
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario; */
-
-
     @Size(min = 8, max = 8,message = "El DNI debe tener 8 digitos")
     private String dni;
 
@@ -44,6 +39,11 @@ public class Estudiante implements Serializable {
     private String correo;
 
     private String nombre;
+
+    /*
+    @JsonIgnoreProperties(value = {"estudiante"})
+    @OneToMany(orphanRemoval = true,cascade = CascadeType.ALL,mappedBy = "estudiante")
+    private List<Nota> nota;*/
 
     private String grado;
 

@@ -26,8 +26,10 @@ public class SecurityConfiguration {
                 .logout(logout->logout.disable()) // Deshabilitar el manejo predeterminado de logout
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers(HttpMethod.POST,"/login","/**").permitAll()
-                                .requestMatchers(HttpMethod.GET,"/**","/assets/**").permitAll()
+                                .requestMatchers(HttpMethod.GET,"/usuario/**","/assets/**","/**").permitAll()
+                                .requestMatchers(HttpMethod.PUT,"/**","/assets/**","/matricula/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/familia/**").hasAuthority("admin")
+                                .requestMatchers(HttpMethod.DELETE, "/**").permitAll()
                                 .anyRequest().authenticated())
                 .build();
 

@@ -19,7 +19,7 @@ public class Matricula {
 
     private String estado;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "estudiante")
     private Estudiante estudiante;
 

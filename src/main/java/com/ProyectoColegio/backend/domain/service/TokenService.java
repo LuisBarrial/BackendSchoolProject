@@ -76,7 +76,7 @@ public class TokenService {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             JWTVerifier verifier = JWT.require(algorithm)
                     // specify an specific claim validations
-                    .withIssuer("phuyu")
+                    .withIssuer("sanluisgonzaga")
                     .build();
             // reusable verifier instance
             decodedJWT = verifier.verify(token);

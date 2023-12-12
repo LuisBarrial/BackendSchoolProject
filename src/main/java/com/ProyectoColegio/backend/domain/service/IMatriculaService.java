@@ -11,6 +11,8 @@ public interface IMatriculaService {
 
     public List<Matricula> findMatriculaporGrado(String grado);
 
+    public Matricula findMatriculaporIdEstudiante(Long id);
+
     public Matricula findById(Long id);
 
     public Matricula save(Matricula e);

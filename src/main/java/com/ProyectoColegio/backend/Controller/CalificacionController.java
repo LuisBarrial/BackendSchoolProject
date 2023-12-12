@@ -43,12 +43,12 @@ public class CalificacionController {
         Nota nota = new Nota();
         nota.setEstudiante(e);
         nota.setCurso(c);
-        nota.setEF(calificacionesDTO.EF());
+      /*  nota.setEF(calificacionesDTO.EF());
         nota.setRF(calificacionesDTO.RF());
         nota.setR1(calificacionesDTO.R1());
         nota.setE1(calificacionesDTO.E1());
         nota.setE2(calificacionesDTO.E2());
-        nota.setE3(calificacionesDTO.E3());
+        nota.setE3(calificacionesDTO.E3()); */
         calificaciones.setNota(nota);
         return ResponseEntity.ok(iCalificacionService.save(calificaciones));
     }

@@ -3,6 +3,8 @@ package com.ProyectoColegio.backend.Controller;
 import com.ProyectoColegio.backend.domain.model.Consulta;
 import com.ProyectoColegio.backend.domain.model.Curso;
 import com.ProyectoColegio.backend.domain.model.DTO.ConsultaDTO;
+import com.ProyectoColegio.backend.domain.model.Nota;
+import com.ProyectoColegio.backend.domain.repo.INotasDAO;
 import com.ProyectoColegio.backend.domain.service.ICursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,9 @@ public class CursoController {
 
     @Autowired
     private ICursoService iCursoService;
+
+    @Autowired
+    private INotasDAO iNotasDAO;
 
     @PostMapping
     public ResponseEntity<Curso> guardar(@RequestBody Curso curso){
@@ -47,6 +52,9 @@ public class CursoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Curso> eliminar(@PathVariable("id") Long id){
         Curso curso= iCursoService.findById(id);
+
+        List<Nota> notas = iNotasDAO.getNotasdeCurso(id);
+        iNotasDAO.deleteAll(notas);
         iCursoService.delete(id);
         return ResponseEntity.ok(curso);
     }

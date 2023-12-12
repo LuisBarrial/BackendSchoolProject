@@ -15,7 +15,7 @@ import lombok.*;
 public class Nota {
 
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false,fetch = FetchType.LAZY)
+    @ManyToOne(optional = false,fetch = FetchType.LAZY)
     @JoinColumn(name = "estudiante_id")
     @Id
     @JsonIgnore
@@ -26,16 +26,16 @@ public class Nota {
     @JoinColumn(name = "curso_id")
     private Curso curso;
 
-    private double E1;
+    private double e1;
 
-    private double E2;
+    private double e2;
 
-    private double R1;
+    private double r1;
 
-    private double E3;
+    private double e3;
 
-    private double EF;
+    private double ef;
 
-    private double RF;
+    private double rf;
 
 }

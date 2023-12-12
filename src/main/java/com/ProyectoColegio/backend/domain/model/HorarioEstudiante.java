@@ -37,6 +37,8 @@ public class HorarioEstudiante {
     @JoinColumn(name= "id_salon",foreignKey = @ForeignKey(name = "fk_salon_horarioE"))
     private Salon salon;
 
+    private String dias;
+
     @Pattern(regexp = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$", message = "El formato debe ser hh:mm")
     private String horaInicio;
 

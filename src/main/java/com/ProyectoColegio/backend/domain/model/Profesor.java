@@ -17,21 +17,6 @@ import java.io.Serializable;
 @Table(name = "profesor")
 @EqualsAndHashCode(of = "id")
 public class Profesor implements Serializable {
-/*
-    @Id
-    @Column(name = "id_usuario") // Nombre de la columna que representa la clave primaria de Usuario
-    private Long id; // Campo que representa la clave primaria de Usuario
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn // Utiliza la misma clave primaria que la entidad Usuario
-    private Usuario usuario; */
-
-/*
-    @Id
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
-*/
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
